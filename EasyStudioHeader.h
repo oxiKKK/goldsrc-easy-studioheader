@@ -435,7 +435,22 @@ public:
 	{
 		return reinterpret_cast<StudioTexture*>((uint8_t*)this + textureoffset);
 	}
-	StudioTexture* texture_by_name(const char*);
+	StudioTexture* texture_by_name(const char* name)
+	{
+		const auto tex = textures();
+		for (int32_t i = 0; i < numtextures; i++)
+		{
+			if (!&tex[i])
+				continue;
+
+			if (stricmp(tex[i].name, name))
+				continue;
+
+			return &tex[i];
+		}
+
+		return nullptr;
+	}
 
 	// replaceable textures
 	int32_t		numskinref;
