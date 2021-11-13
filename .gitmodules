@@ -1,0 +1,3 @@
+[submodule "src/vector"]
+	path = src/vector
+	url = https://github.com/oxiKKK/vector-class
