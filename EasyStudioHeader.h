@@ -3,9 +3,6 @@
 
 #pragma once
 
-#include <cstdint>
-#include "vector/vector.h"
-
 inline static constexpr uint32_t kMaxMDLFileBuffer = 16 * 1024 * 1024;
 
 inline static constexpr uint32_t kMaxModelHeaderName = 64;
