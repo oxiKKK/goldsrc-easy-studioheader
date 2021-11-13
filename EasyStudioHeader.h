@@ -83,8 +83,6 @@ public:
 	int32_t		width;
 	int32_t		height;
 	int32_t		index;
-
-	void dump();
 };
 
 // bones
@@ -97,8 +95,6 @@ public:
 	int32_t		bonecontroller[MAX_NUM_COORDINATE_AXES];	// bone controller index, -1 == none
 	float		value[MAX_NUM_COORDINATE_AXES];	// default DoF values
 	float		scale[MAX_NUM_COORDINATE_AXES];   // scale for delta DoF values
-
-	void dump();
 };
 
 // bone controllers
@@ -111,8 +107,6 @@ public:
 	float		end;
 	int32_t		rest;	// byte index value at rest
 	int32_t		index;	// 0-3 user set controller, 4 mouth
-
-	void dump();
 };
 
 // intersection boxes
@@ -123,8 +117,6 @@ public:
 	int32_t		group;	// intersection group
 	Vector		bbmin;	// bounding box
 	Vector		bbmax;
-
-	void dump();
 };
 
 // sequence descriptions
@@ -146,8 +138,6 @@ public:
 		int32_t event;
 		int32_t type;
 		char 	options[MAX_EVENT_OPTIONS_LENGTH];
-
-		void dump();
 	};
 
 	int32_t		numevents;
@@ -164,8 +154,6 @@ public:
 	public:
 		Vector org;
 		int32_t start, end;
-
-		void dump();
 	};
 
 	int32_t		numpivots;	// number of foot pivots
@@ -199,15 +187,11 @@ public:
 				uint8_t total;
 			} num;
 			uint16_t value;
-
-			void dump();
 		};
 		Value* values(void* pHeader, int32_t idx) const
 		{
 			return reinterpret_cast<Value*>((uint8_t*)pHeader + offset[idx]);
 		}
-
-		void dump(void* pHeader);
 	};
 
 	int32_t		numblends;		// TODO: rename struct
@@ -230,8 +214,6 @@ public:
 	int32_t		nodeflags;		// transition rules
 
 	int32_t		nextseq;		// auto advancing sequences
-
-	void dump(void *pHeader);
 };
 
 // demand loaded sequence groups
@@ -242,8 +224,6 @@ public:
 	char	name[kMaxSequenceGroupFilename]; // file name
 	int32_t	unused1; // was "cache"  - index pointer
 	int32_t	unused2; // was "data" -  hack for group 0
-
-	void dump();
 };
 
 // replaceable textures
@@ -251,8 +231,6 @@ class StudioSkinRef
 {
 public:
 	uint16_t* skinref;
-
-	void dump();
 };
 
 // body part index
@@ -278,8 +256,6 @@ public:
 			{
 			public:
 				uint16_t* tricmd;
-
-				void dump();
 			};
 
 			int32_t numtris;
@@ -295,8 +271,6 @@ public:
 			{
 			public:
 				Vector normal;
-
-				void dump();
 			};
 
 			int32_t numnorms;	// per mesh normals
@@ -305,8 +279,6 @@ public:
 			{
 				return reinterpret_cast<Normal*>((uint8_t*)pHeader + normoffset);
 			}
-
-			void dump(void*);
 		};
 
 		int32_t		nummesh;
@@ -320,16 +292,12 @@ public:
 		{
 		public:
 			Vector vertex;
-
-			void dump();
 		};
 
 		class VertexInfo
 		{
 		public:
 			uint8_t bone;
-
-			void dump();
 		};
 
 		int32_t		numverts;		// number of unique vertices
@@ -348,16 +316,12 @@ public:
 		{
 		public:
 			Vector normal;
-
-			void dump();
 		};
 
 		class NormalInfo
 		{
 		public:
 			uint8_t bone;
-
-			void dump();
 		};
 
 		int32_t		numnorms;		// number of unique surface normals
@@ -376,8 +340,6 @@ public:
 		// TODO: Unused in goldsrc?
 		int32_t		numgroups;
 		int32_t		groupoffset;
-
-		void dump(void*);
 	};
 
 	int32_t		nummodels;
@@ -387,8 +349,6 @@ public:
 	{
 		return reinterpret_cast<StudioSubModel*>((uint8_t*)pHeader + modelindex);
 	}
-
-	void dump(void*);
 };
 
 // attachment
@@ -402,8 +362,6 @@ public:
 
 	Vector org; // Offset from bone origin.
 	Vector vectors[MAX_ATTACH_NUM_VECTORS]; // Directional vectors? Unused in GoldSource.
-
-	void dump();
 };
 
 // Transitions
@@ -411,8 +369,6 @@ class StudioTransition
 {
 public:
 	uint8_t* transition;
-
-	void dump();
 };
 
 // header for demand loaded sequence group data
@@ -524,7 +480,6 @@ public:
 	}
 
 	const char* id_string();
-	void dump();
 };
 
 #endif
