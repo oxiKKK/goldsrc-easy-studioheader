@@ -476,7 +476,15 @@ public:
 		return reinterpret_cast<StudioTransition*>((uint8_t*)this + transitionoffset);
 	}
 
-	const char* id_string();
+	const char* id_string()
+	{
+		switch (id)
+		{
+			case kIDStudioHeader: 	 return "IDST";
+			case kIDStudioSeqHeader: return "IDSQ";
+			default: 			  	 return "unknown";
+		}
+	}
 };
 
 #endif
