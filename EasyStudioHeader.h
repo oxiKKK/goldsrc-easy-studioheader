@@ -185,9 +185,9 @@ public:
 			} num;
 			uint16_t value;
 		};
-		Value* values(void* pHeader, int32_t idx) const
+		Value* values(Animation* pAnimation, int32_t idx) const
 		{
-			return reinterpret_cast<Value*>((uint8_t*)pHeader + offset[idx]);
+			return reinterpret_cast<Value*>((uint8_t*)pAnimation + offset[idx]);
 		}
 	};
 
